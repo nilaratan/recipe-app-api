@@ -52,7 +52,7 @@ class PublicUserApiTests(TestCase):
     def test_passwd_too_short_error(self):
         """Test error returned if password is too short"""
         payload = {
-            'email': 'user11@gmail.com',
+            'email': 'user1@gmail.com',
             'password': 'test',
             'name': 'Test user'
         }

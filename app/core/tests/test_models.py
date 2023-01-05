@@ -64,3 +64,32 @@ class ModelTests(TestCase):
 
         self.assertEqual(recipe.user, user)
         self.assertEqual(recipe.title, 'Sample recipe name')
+
+    def test_create_tag(self):
+        """Test tag created success"""
+        user = get_user_model().objects.create_user(
+            email='testuser2@gmail.com',
+            name='Test user',
+            password='testpass123'
+        )
+        tag = models.Tag.objects.create(
+            name='sample tag',
+            user=user
+        )
+
+        self.assertEqual(str(tag), tag.name)
+
+    def test_create_ingredients(self):
+        """Test for creating ingredients is successful."""
+        user = get_user_model().objects.create_user(
+            email='demodemo@gmail.com',
+            password='demodemo@123'
+        )
+        ingredient = models.Ingredient.objects.create(
+            name='Lasun',
+            user=user
+        )
+
+        self.assertEqual(ingredient.user, user)
+        self.assertEqual(str(ingredient), ingredient.name)
+        self.assertEqual(ingredient.name, 'Lasun')
